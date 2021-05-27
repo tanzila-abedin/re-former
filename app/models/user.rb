@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
-      validates :username, presence: { message: 'must be given please' },
-      validates :email, presence: { message: 'must be given please' },
-      validates :password, presence: { message: 'must be given please' },
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
 end
