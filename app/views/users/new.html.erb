@@ -13,12 +13,13 @@
          value="Create my account" />
 </form> %>
 
-<%= form_tag(users_path(@user), method: "post") do %>
-  <%= label_tag(:name, "Enter Name:")%><br>
-  <%= text_field_tag(:'user[name]')%><br>
-  <%= label_tag(:email, "Enter Email:")%><br>
-  <%= email_field(:user,:email)%><br>
-  <%= label_tag(:password, "Enter password:")%><br>
-  <%= password_field_tag(:'user[password]')%><br>
-  <%= submit_tag("Submit")%>
-<% end  %>
+<%= form_with(model:@user,local:true) do |form| %>
+  <%# <%= render 'layouts/errors'%> %>
+  <%= form.label :name, "Enter username here" %><br>
+  <%= form.text_field :name , placeholder: "Name" %><br>
+  <%= form.label :email, "Enter user email here" %><br>
+  <%= form.email_field :email , placeholder: "Email" %><br>
+  <%= form.label :password, "Enter user password here" %><br>
+  <%= form.password_field :password, placeholder: "password" %><br>
+  <%= form.submit "Submit" %>
+<% end %>
