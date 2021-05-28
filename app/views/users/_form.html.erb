@@ -1,36 +1,17 @@
-<%# <form accept-charset="UTF-8" action="/users" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>
-  <%# <label for="user_name">Name</label>
-  <input id="user_name" name="user[name]" type="text" />
 
-  <label for="user_email">Email</label>
-  <input id="user_email" name="user[email]" type="email" />
-
-  <label for="user_password">Password</label>
-  <input id="user_password" name="user[password]"
-         type="password" />
-  <input class="btn btn-primary" name="commit" type="submit"
-         value="Create my account" />
-</form> %>
-
-
-<%# <%= form_tag(users_path(@user), method: "post") do %> 
-  <%# <%= label_tag(:name, "Enter Name:")%><br> 
-  <%# <%= text_field_tag(:'user[name]')%><br> 
-  <%# <%= label_tag(:email, "Enter Email:")%><br>
-  <%# <%= email_field(:user,:email)%><br> 
-  <%# <%= label_tag(:password, "Enter password:")%><br> 
-  <%# <%= password_field_tag(:'user[password]')%><br> 
-  <%# <%= submit_tag("Submit") %> 
-<%# <% end   %> 
-
-<%= form_with(model:@user,local:true) do |form| %>
-  <%= render 'layouts/errors'%>
-  <%= form.label :name, "Enter username here" %><br>
-  <%= form.text_field :name , placeholder: "Name" %><br>
-  <%= form.label :email, "Enter user email here" %><br>
-  <%= form.email_field :email , placeholder: "Email" %><br>
-  <%= form.label :password, "Enter user password here" %><br>
-  <%= form.password_field :password, placeholder: "password" %><br>
+<%= form_with(model:@user,local:true) do |form| %><br><br>
+  <%= form.label :name, "Enter user name below" %><br>
+  <%= form.text_field :name , placeholder: "Name" %><br><br>
+  <%= form.label :email, "Enter user email below" %><br>
+  <%= form.email_field :email , placeholder: "Email" %><br><br>
+  <%= form.label :password, "Enter user password below" %><br>
+  <%= form.password_field :password, placeholder: "password" %><br><br><br>
   <%= form.submit "Submit" %>
 <% end %>
+
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message|%>\
+  <h3><%= message %> </h3>
+  <%end%>
+<%end%>
+
